@@ -6,10 +6,12 @@ Perception Model Safety & Regression Validation Pipeline. CV model CI/testing sy
 YOLOv8n, ONNX, OpenVINO (CPU), pandas, SQLite, GitHub Actions, Docker, Streamlit.
 
 ## Branches
-- `main`: releases only, protected, empty until first release.
+- `main`: releases only, protected.
 - `dev`: integration branch, default.
-- `feature/<issue#>-<short-desc>`, `bugfix/<issue#>-<short-desc>`.
+- `feature/<short-desc>`, `bugfix/<short-desc>`.
+- **Max 5 remote branches at any time** (main + dev + up to 3 feature/bugfix).
 - Never commit directly to `main` or `dev`.
+- Delete feature/bugfix branches immediately after merge.
 
 ## Workflow
 1. Open GitHub issue for the task.
