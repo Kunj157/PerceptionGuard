@@ -9,6 +9,7 @@
 *.engine
 *.torchscript
 *.sqlite3
+gate_result.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
