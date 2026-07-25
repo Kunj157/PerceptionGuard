@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get version from PR title
+        id: version
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          VERSION=$(echo "$TITLE" | grep -oP 'v\d+\.\d+\.\d+' || echo "")
+          if [ -z "$VERSION" ]; then
+            echo "No version tag found in PR title. Skipping release."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create release
+        if: steps.version.outputs.skip == 'false'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          git tag "$VERSION"
+          git push origin "$VERSION"
+          gh release create "$VERSION" \
+            --title "$VERSION" \
+            --notes "Release $VERSION" \
+            --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
