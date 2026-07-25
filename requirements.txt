@@ -1,4 +1,5 @@
 pandas>=2.0
+pyyaml>=6.0
 openvino>=2024.0
 ultralytics>=8.1
 ruff>=0.4
