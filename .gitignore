@@ -1,3 +1,15 @@
+# Project-specific
+/docs
+/data/*
+!/data/.gitkeep
+/models/
+*.onnx
+*.pt
+*.pth
+*.engine
+*.torchscript
+*.sqlite3
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
