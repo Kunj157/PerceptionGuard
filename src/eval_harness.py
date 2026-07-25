@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 import pandas as pd
 
 
@@ -43,7 +41,7 @@ def _compute_ap(
 ) -> float:
     """Compute average precision for a single image."""
     if not ground_truths:
-        return 1.0 if not predictions else 0.0
+        return 0.0
     if not predictions:
         return 0.0
 
