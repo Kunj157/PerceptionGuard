@@ -5,6 +5,8 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import pandas as pd
 
 from src.regression_checker import get_baseline, init_db, overall_verdict
