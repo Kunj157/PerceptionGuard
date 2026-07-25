@@ -1,8 +1,11 @@
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import streamlit as st
 
-from src.dashboard import build_accuracy_table, build_coverage_heatmap, get_latest_run, get_runs
+from dashboard import build_accuracy_table, build_coverage_heatmap, get_latest_run, get_runs
 
 DB_PATH = Path("data/metrics.db")
 
