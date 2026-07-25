@@ -229,3 +229,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# IDE config
+.agents/
+.claude/
